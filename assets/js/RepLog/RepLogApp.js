@@ -19,15 +19,24 @@ export default class RepLogApp extends Component
         }
 
         this.handleRowClick = this.handleRowClick.bind(this);
+        this.handleNewItemSubmit = this.handleNewItemSubmit.bind(this);
     }
 
     handleRowClick(repLogId) {
         this.setState({highlightedRowId: repLogId})
     }
 
-    handleNewItemSubmit(itemName, reps) {
-        console.log('TODO');
-        console.log(itemName, reps);
+    handleNewItemSubmit(itemLabel, reps) {
+        const repLogs = this.state.repLogs;
+        const newRep = {
+            id: 'TODO-id',
+            reps: reps,
+            itemLabel: itemLabel,
+            totalWeightLifted: Math.floor(Math.random() * 50)
+        };
+
+        repLogs.push(newRep);
+        this.setState({repLogs: repLogs});
     }
 
     render() {
