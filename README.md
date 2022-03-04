@@ -30,4 +30,8 @@ yarn install
 yarn run encore dev --watch
 ```
 
+URL: http://localhost:89/reactjs/public/index.php/login
+LOGIN: ron_furgandy
+PASSWORD: pumpup
+
 

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import RepLogList from "./RepLogList";
 
 //Base React Component
 export default class RepLogApp extends Component
@@ -9,9 +10,11 @@ export default class RepLogApp extends Component
         this.state = {
             highlightedRowId: null,
         }
+
+        this.handleRowClick = this.handleRowClick.bind(this);
     }
 
-    handleRowClick(repLogId, event) {
+    handleRowClick(repLogId) {
         this.setState({highlightedRowId: repLogId})
     }
 
@@ -24,11 +27,7 @@ export default class RepLogApp extends Component
             heart = <span>Heart</span>
         }
 
-        const repLogs = [
-            { id: 1, reps: 25, itemLabel: 'My Laptop', totalWeightLifted: 112.5 },
-            { id: 2, reps: 10, itemLabel: 'Big Fat Cat', totalWeightLifted: 180 },
-            { id: 8, reps: 4, itemLabel: 'Big Fat Cat', totalWeightLifted: 72 }
-        ];
+
 
         return (
             <div className="col-md-7">
@@ -45,20 +44,10 @@ export default class RepLogApp extends Component
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
-                    <tbody>
-                        {repLogs.map((repLog) => (
-                                <tr
-                                    key = {repLog.id}
-                                    className={highlightedRowId === repLog.id ? 'info' : ''}
-                                    onClick={() => this.handleRowClick(repLog.id)}
-                                >
-                                    <td>{repLog.itemLabel}</td>
-                                    <td>{repLog.reps}</td>
-                                    <td>{repLog.totalWeightLifted}</td>
-                                    <td>...</td>
-                                </tr>
-                        ))}
-                    </tbody>
+                        <RepLogList
+                            highlightedRowId={highlightedRowId}
+                            onRowClick={this.handleRowClick}
+                        />
                     <tfoot>
                     <tr>
                         <td>&nbsp;</td>
@@ -98,8 +87,6 @@ export default class RepLogApp extends Component
                     {' '}
                     <button type="submit" className="btn btn-primary">I Lifted it!</button>
                 </form>
-
-
             </div>
         )
     }
