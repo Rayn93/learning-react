@@ -23,6 +23,9 @@ export default class RepLogCreator extends Component
             itemSelect.options[itemSelect.selectedIndex].text,
             quantityInput.value
         );
+
+        quantityInput.value = '';
+        itemSelect.selectedIndex = 0;
     }
 
     render() {
