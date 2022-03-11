@@ -17,7 +17,13 @@ function calculateTotalWeight(repLogs) {
 
 
 export default function RepLogs(props) {
-    const { highlightedRowId, onRowClick, withHeart, repLogs, onNewItemSubmit } = props;
+    const {
+        highlightedRowId,
+        onRowClick,
+        withHeart,
+        repLogs,
+        onAddRepLog
+    } = props;
 
     let heart = '';
 
@@ -55,9 +61,13 @@ export default function RepLogs(props) {
                 </tfoot>
             </table>
 
-            <RepLogCreator
-                onNewItemSubmit={onNewItemSubmit}
-            />
+            <div className="row">
+                <div className="col-md-6">
+                    <RepLogCreator
+                        onAddRepLog={onAddRepLog}
+                    />
+                </div>
+            </div>
         </div>
     )
 }
@@ -66,6 +76,6 @@ RepLogs.propTypes = {
     withHeart: PropTypes.bool,
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
-    onNewItemSubmit: PropTypes.func.isRequired,
+    onAddRepLog: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired
 };
