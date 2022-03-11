@@ -22,13 +22,15 @@ export default function RepLogs(props) {
         onRowClick,
         withHeart,
         repLogs,
-        onAddRepLog
+        onAddRepLog,
+        numberOfHearts,
+        onHeartChange
     } = props;
 
     let heart = '';
 
     if (props.withHeart) {
-        heart = <span>Heart</span>
+        heart = <span>{'* '.repeat(numberOfHearts)}</span>
     }
 
     return (
@@ -36,6 +38,14 @@ export default function RepLogs(props) {
             <h2>
                 Lift History {heart}
             </h2>
+
+            <input
+                type="range"
+                value={numberOfHearts}
+                onChange={(e) => {
+                    onHeartChange(+e.target.value);
+                }}
+            />
 
             <table className="table table-striped">
                 <thead>
@@ -77,5 +87,7 @@ RepLogs.propTypes = {
     highlightedRowId: PropTypes.any,
     onRowClick: PropTypes.func.isRequired,
     onAddRepLog: PropTypes.func.isRequired,
-    repLogs: PropTypes.array.isRequired
+    onHeartChange: PropTypes.func.isRequired,
+    repLogs: PropTypes.array.isRequired,
+    numberOfHearts: PropTypes.number.isRequired,
 };
