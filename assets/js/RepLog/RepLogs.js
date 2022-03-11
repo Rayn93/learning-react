@@ -1,7 +1,10 @@
 import React from "react";
 import RepLogList from "./RepLogList";
 import PropTypes from 'prop-types';
+//Uncontrolled component
 import RepLogCreator from "./RepLogCreator";
+//Controlled component
+// import RepLogCreator from "./RepLogCreatorControlledComponents";
 
 function calculateTotalWeight(repLogs) {
     let total = 0
@@ -24,7 +27,8 @@ export default function RepLogs(props) {
         repLogs,
         onAddRepLog,
         numberOfHearts,
-        onHeartChange
+        onHeartChange,
+        onDeleteItem
     } = props;
 
     let heart = '';
@@ -59,6 +63,7 @@ export default function RepLogs(props) {
                 <RepLogList
                     highlightedRowId={highlightedRowId}
                     onRowClick={onRowClick}
+                    onDeleteItem={onDeleteItem}
                     repLogs={repLogs}
                 />
                 <tfoot>
@@ -88,6 +93,7 @@ RepLogs.propTypes = {
     onRowClick: PropTypes.func.isRequired,
     onAddRepLog: PropTypes.func.isRequired,
     onHeartChange: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
     numberOfHearts: PropTypes.number.isRequired,
 };
