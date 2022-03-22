@@ -28,7 +28,8 @@ export default function RepLogs(props) {
         onAddRepLog,
         numberOfHearts,
         onHeartChange,
-        onDeleteItem
+        onDeleteItem,
+        isLoaded
     } = props;
 
     let heart = '';
@@ -65,6 +66,7 @@ export default function RepLogs(props) {
                     onRowClick={onRowClick}
                     onDeleteItem={onDeleteItem}
                     repLogs={repLogs}
+                    isLoaded={isLoaded}
                 />
                 <tfoot>
                 <tr>
@@ -96,4 +98,5 @@ RepLogs.propTypes = {
     onDeleteItem: PropTypes.func.isRequired,
     repLogs: PropTypes.array.isRequired,
     numberOfHearts: PropTypes.number.isRequired,
+    isLoaded: PropTypes.bool.isRequired,
 };
