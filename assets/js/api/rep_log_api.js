@@ -1,3 +1,11 @@
+function fetchJson(url, options) {
+    return fetch(url, Object.assign({
+        credentials: 'same-origin',
+    }, options))
+        .then(response => {
+            return response.json();
+        });
+}
 
 /**
  * Returns a promise where the data is the rep log collection
@@ -5,10 +13,12 @@
  * @return {Promise<Response>}
  */
 export function getRepLogs() {
-    return fetch('/reactjs/public/index.php/reps' , {
-        credentials: 'same-origin'
+    return fetchJson('/reactjs/public/index.php/reps')
+        .then(data => data.items);
+}
+
+export function deleteRepLog(id) {
+    return fetchJson(`/reactjs/public/index.php/reps/${id}`, {
+        method: 'DELETE',
     })
-        .then(response => {
-            return response.json().then((data) => data.items);
-        })
 }
