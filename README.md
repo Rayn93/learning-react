@@ -3,6 +3,12 @@ Base on course on [SymfonyCast](http://knpuniversity.com)
 
 Instalations
 
+```
+docker-compose up -d
+docker-compose exec webserver bash
+cd reactjs/
+```
+
 1. Install NVM:
 
 ```
