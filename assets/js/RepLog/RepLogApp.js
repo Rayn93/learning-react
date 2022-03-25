@@ -145,4 +145,9 @@ export default class RepLogApp extends Component
 
 RepLogApp.propTypes = {
     withHeart: PropTypes.bool,
+    itemOptions: PropTypes.array,
 };
+
+RepLogApp.defaultProps = {
+    itemOptions: []
+}
