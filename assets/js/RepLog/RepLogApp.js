@@ -75,7 +75,8 @@ export default class RepLogApp extends Component
                     const errors = errorsData.errors;
                     const firstError = errors[Object.keys(errors)[0]];
                     this.setState({
-                        newRepLogValidationErrorMessage: firstError
+                        newRepLogValidationErrorMessage: firstError,
+                        isSavingNewRepLog: false,
                     });
                 })
             })
